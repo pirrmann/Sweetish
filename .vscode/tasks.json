@@ -6,9 +6,9 @@
         {
             "taskName": "Build",
             "type": "shell",
-            "command": "${workspaceRoot}/build.sh BuildApp",
+            "command": "dotnet build",
             "windows": {
-                "command": "${workspaceRoot}/build.cmd BuildApp"
+                "command": "dotnet build"
             },
             "problemMatcher":"$msCompile",
             "group": {
@@ -17,11 +17,27 @@
             }
         },
         {
-            "taskName": "Run tests",
+            "label": "Run",
             "type": "shell",
-            "command": "${workspaceRoot}/build.sh Test",
+            "command": "dotnet run",
             "windows": {
-                "command": "${workspaceRoot}/build.cmd Test"
+                "command": "dotnet run",
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/Sweetish"
+            },
+            "problemMatcher":"$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "Run tests",
+            "type": "shell",
+            "command": "dotnet run -- tests",
+            "windows": {
+                "command": "dotnet run -- tests",
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/Sweetish"
             },
             "problemMatcher":"$msCompile",
             "group": {

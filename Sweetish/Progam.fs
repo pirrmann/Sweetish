@@ -60,9 +60,12 @@ module Console =
         printInstructions()
         loop ()
 
+open Expecto
+
 [<EntryPoint>]
 let main argv =
-
-    Console.executeInLoop (Successful.OK "hello world")
-
-    0
+    match argv with
+        | [| "tests" |] -> Tests.runTestsInAssembly { defaultConfig with ``parallel`` = false } Array.empty
+        | _ ->
+            Console.executeInLoop (Successful.OK "hello world")
+            0
