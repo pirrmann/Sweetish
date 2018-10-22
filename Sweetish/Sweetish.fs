@@ -4,7 +4,7 @@ module Http =
     type [<RequireQualifiedAccess>] Verb = GET | POST
     type Request = {
         Verb : Verb
-        Route : string
+        Url : string
     }
 
     type Response = {
@@ -23,5 +23,7 @@ module Successful =
     open Http
 
     let OK (content:string) context = async {
-        return Some { context with Response = { Content = content; StatusCode = 200 } }
+        return Some {
+            context with Response = { Content = content; StatusCode = 200 }
+        }
     }

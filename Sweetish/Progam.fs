@@ -20,26 +20,26 @@ module Console =
     let parseRequest (input : System.String) =
         let parts = input.Split([|';'|])
         let rawType = parts.[0]
-        let route = parts.[1]
+        let url = parts.[1]
         match rawType with
-        | "GET" -> { Verb = Verb.GET; Route = route }
-        | "POST" -> { Verb = Verb.POST; Route = route }
+        | "GET" -> { Verb = Verb.GET; Url = url }
+        | "POST" -> { Verb = Verb.POST; Url = url }
         | _ -> failwith "invalid request"
 
     let printInstructions() =
-        printfn "Valid routes are of the form \"VERB;route\", where VERB can be either GET or POST."
+        printfn "Valid input requests are of the form \"VERB;url\", where VERB can be either GET or POST."
         printfn "For instance:"
         printfn "  GET;/"
         printfn "  POST;/user/123"
         printfn ""
 
     let executeInLoop webpart =
-        let emptyRequest = { Route = ""; Verb = Verb.GET }
+        let emptyRequest = { Url = ""; Verb = Verb.GET }
         let emptyResponse = { Content = ""; StatusCode = 200 }
         let emptyContext = { Request = emptyRequest; Response = emptyResponse }
 
         let rec loop () =
-            printf "Enter Input Route (or exit to exit):"
+            printf "Enter input request (or exit to exit):"
             let input = System.Console.ReadLine()
             try
                 if input = "exit" then

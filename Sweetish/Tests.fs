@@ -25,8 +25,8 @@ let emptyResponse = {
     Content = null
 }
 
-let createContext (verb, route) = {
-    Request = { Verb = verb; Route = route }
+let createContext (verb, url) = {
+    Request = { Verb = verb; Url = url }
     Response = emptyResponse
 }
 

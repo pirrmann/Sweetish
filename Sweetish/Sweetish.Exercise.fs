@@ -16,5 +16,5 @@ module Filters =
     // This should filter and only handle POST requests
     let POST : WebPart = fun _ -> __
 
-    // this should filter and only handle routes which match a given path
+    // this should filter and only handle urls which match a given path
     let Path (path:string) : WebPart = fun _ -> __
